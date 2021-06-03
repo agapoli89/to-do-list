@@ -4,20 +4,23 @@ const TaskList = props => {
 
     const activeTasks = props.tasks.filter(task => task.active);
     const doneTasks = props.tasks.filter(task => !task.active);
+    const activeTasksToReturn = activeTasks.map(task => (
+        <Task key={task.id} task={task} delete={props.delete} change={props.change}/>
+        ))
+    const doneTasksToReturn = doneTasks.map(task => (
+        <Task key={task.id} task={task} delete={props.delete} change={props.change}/>
+        ))
 
     return (
         <>
             <h1>Zadania do zrobienia</h1>
             <ul className="active">
-                {activeTasks.map(task => (
-                <Task key={task.id} task={task} delete={props.delete} change={props.change}/>
-                ))}
+                {activeTasksToReturn.length > 0 ? activeTasksToReturn : <p>Nie masz zadań do wykonania</p>}
             </ul>
-            <h2>Zadania zrobione (1) </h2>
+            <h2>Zadania zrobione ({doneTasksToReturn.length}) </h2>
             <ul className="done">
-                {doneTasks.map(task => (
-                <Task key={task.id} task={task} delete={props.delete} change={props.change}/>
-                ))}
+                {doneTasksToReturn.length > 5 && <span style={{ fontSize: 10 }}>Wyświetlonych jest tylko 5 ostatnio zrobionych zadań</span>}
+                {doneTasksToReturn.slice(0,5)}
             </ul>
         </>
     )
