@@ -35,11 +35,25 @@ class App extends Component {
   }
 
   deleteTask = id => {
-    console.log('delete' + id);
+    const tasks = [...this.state.tasks];
+    const index = tasks.findIndex(task => task.id === id);
+    tasks.splice(index,1);
+
+    this.setState({
+      tasks,
+    })
   }
 
   changeTaskStatus = id => {
-    console.log('change' + id);
+    const tasks = [...this.state.tasks];
+    const index = tasks.findIndex(task => task.id === id);
+
+    tasks[index].active = !tasks[index].active;
+    tasks[index].finishDate = new Date().getTime();
+
+    this.setState({
+      tasks,
+    })
   }
 
 
