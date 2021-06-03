@@ -13,10 +13,12 @@ const TaskList = props => {
 
     return (
         <>
+            <hr />
             <h1>Zadania do zrobienia</h1>
             <ul className="active">
                 {activeTasksToReturn.length > 0 ? activeTasksToReturn : <p>Nie masz zadań do wykonania</p>}
             </ul>
+            <hr />
             <h2>Zadania zrobione ({doneTasksToReturn.length}) </h2>
             <ul className="done">
                 {doneTasksToReturn.length > 5 && <span style={{ fontSize: 10 }}>Wyświetlonych jest tylko 5 ostatnio zrobionych zadań</span>}
