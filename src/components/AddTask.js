@@ -27,6 +27,10 @@ class AddTask extends Component {
         })
     }
 
+    handleClick = () => {
+        console.log('click');
+    }
+
     render() {
         let maxDate = Number(this.minDate.slice(0,4)) + 1;
         maxDate = maxDate+"-12-31";
@@ -38,7 +42,7 @@ class AddTask extends Component {
                 <br />
                 <label htmlFor="date">Do kiedy zrobić: <input type="date" id="date" value={this.state.date} min={this.minDate} max={maxDate} onChange={this.handleDate}/></label>
                 <br />
-                <button>DODAJ</button>
+                <button onClick={this.handleClick}>DODAJ</button>
             </form>
         )
     }
