@@ -28,8 +28,8 @@ class App extends Component {
         text: 'zrobić naleśniki',
         date: '2021-06-03',
         important: false,
-        active: false,
-        finishDate: '2021-06-03',
+        active: true,
+        finishDate: null,
       }
     ]
   }
