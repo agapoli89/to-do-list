@@ -4,6 +4,16 @@ const TaskList = props => {
 
     const activeTasks = props.tasks.filter(task => task.active);
     const doneTasks = props.tasks.filter(task => !task.active);
+
+    if (doneTasks.length>=2) {
+        doneTasks.sort((a,b) => b.finishDate - a.finishDate)
+    }
+
+    if (activeTasks.length>=2) {
+       activeTasks.sort((a,b) => a.text.localeCompare(b.text))
+    }
+    
+
     const activeTasksToReturn = activeTasks.map(task => (
         <Task key={task.id} task={task} delete={props.delete} change={props.change}/>
         ))
